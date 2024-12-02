@@ -1,0 +1,261 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    
+}
+
+/* styles.css */
+
+body {
+    margin: 0;
+    font-family: "Montserrat", sans-serif;  
+      background-color: #1E1E1E;
+
+}
+::-webkit-scrollbar {
+    display: none; 
+}
+.banner {
+    width: 100%;
+}
+
+.start {
+    position: absolute;
+    z-index: 100;
+    top: 2200px;
+    right: 1000px;
+    padding: 1rem;
+    background-color: none;
+    border-color: transparent;
+    cursor: pointer;
+    color: #f9f7e1;
+    border-radius: 20px;
+    font-weight: bolder;
+    transition-duration: 0.5s;
+margin-left: 10px;}
+
+.start:hover {
+    background-color: #f9f7e1;
+    color: #3e272f;
+}
+.logo{
+    margin-left: 20px;
+    width: 230px;
+    height: 60px;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+}
+.navbar {
+    font-family: "Anton", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    position: sticky; 
+    top: 2; 
+    width: 95.5%;
+    position: absolute;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: none; /* Fondo transparente */
+    padding: 10px 20px;
+    border-radius: 30px; /* Bordes redondeados, opcional */
+    margin: 10px;
+    font-size: 20px;
+}
+
+.navbar-menu {
+    list-style: none; /* Quita los puntos de la lista */
+    display: flex;
+    gap: 60px; /* Espacio entre elementos */
+    margin: 0;
+    padding: 5px;
+}
+
+.navbar-menu li {
+    display: inline;
+}
+
+.navbar-menu a {
+    text-decoration: none; /* Quita el subrayado */
+    color: #ffffff; /* Color del texto */
+    font-weight: bold;
+    transition: color 0.3s ease;
+    gap: 1px;
+}
+
+.navbar-menu a:hover {
+    color: #197187; /* Color amarillo pastel al pasar el mouse */
+}
+
+
+.title {
+    background-color: #3e272f;
+color: #e65c96;
+width: 100%;
+height: 80px;
+display: flex;
+justify-content: center;
+align-items: center;
+margin-top: 40px;
+font-family: "Borel", cursive;
+font-size: 40px;
+}
+
+.wrapper {
+    z-index: 1;
+    width: 100%;
+    height: 50vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #3e272f;
+}
+
+.banner {
+    width: 100%;
+    height: 100vh;
+    text-align: center;
+    overflow: hidden;
+    position: relative;
+    background-color: #0000; /* Mantener fondo transparente */
+    background-image: url('https://i.ibb.co/QDk1BJ3/imagen-de-fondo.png');
+    background-size: cover; /* Asegura que la imagen cubra todo el área */
+    background-position: center; /* Centra la imagen */
+    font-family: "Anton", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+/* Aseguramos que el slider no cubra el texto */
+.banner .slider {
+    position: absolute;
+    width: 200px;
+    height: 250px;
+    top: 10%;
+    left: calc(50% - 100px);
+    transform-style: preserve-3d;
+    transform: perspective(1000px);
+    animation: autoRun 40s linear infinite; /* Cambiar duración a 40s */
+    z-index: 0; /* Aseguramos que el slider esté detrás del texto */
+}
+
+@keyframes autoRun {
+    from {
+        transform: perspective(1000px) rotateX(-16deg) rotateY(0deg);
+    }
+    to {
+        transform: perspective(1000px) rotateX(-16deg) rotateY(360deg);
+    }
+}
+
+.banner .slider .item {
+    position: absolute;
+    inset: 0 0 0 0;
+    transform: 
+        rotateY(calc( (var(--position) - 1) * (360 / var(--quantity)) * 1deg))
+        translateZ(550px);
+}
+
+.banner .slider .item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Aseguramos que el contenido esté por encima de otros elementos */
+.banner .content {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: min(1400px, 100vw);
+    height: max-content;
+    padding-bottom: 100px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 2; /* Texto debe estar por encima del slider */
+}
+
+.banner .content h1 {
+    font-family: "Anton", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 10Rem;
+    line-height: 1em;
+    color: #E43E67;
+    position: relative;
+}
+
+.banner .content h1::after {
+    position: absolute;
+    inset: 0 0 0 0;
+    content: attr(data-content);
+    z-index: 1; /* Aseguramos que el efecto de la sombra de texto no esté por encima */
+    -webkit-text-stroke: 2px #d2d2d2;
+    color: transparent;
+}
+
+/* El autor está también por encima */
+.banner .content .author {
+    font-family: Poppins;
+    text-align: right;
+    max-width: 200px;
+    z-index: 3; /* Aseguramos que el texto del autor esté por encima */
+}
+
+.banner .content h2 {
+    font-size: 3em;
+}
+
+.banner .content .model {
+    background-image: url(images/model.png);
+    width: 100%;
+    height: 75vh;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background-size: auto 130%;
+    background-repeat: no-repeat;
+    background-position: top center;
+    z-index: 1; /* Modelo debe estar por debajo del texto */
+    
+}
+
+
+
+
+.footer {
+    
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #3e272f;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
